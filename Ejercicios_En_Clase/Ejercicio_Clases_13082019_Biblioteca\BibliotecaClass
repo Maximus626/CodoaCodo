@@ -1,0 +1,25 @@
+package Ejercicio_Clases_13082019_Biblioteca;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BibliotecaMain {
+
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        ArrayList<Biblioteca> lista = new ArrayList<>();
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.cargaLista(lista);
+        biblioteca.mostrarlib(lista);
+        
+        System.out.println("Ingrese Codigo del libro a eliminar");
+        int codigo = teclado.nextInt();
+        biblioteca.removerlibro(lista, codigo);
+        biblioteca.mostrarlib(lista);
+        
+        System.out.println("Ingrese Codigo del libro a buscar");
+        codigo = teclado.nextInt();
+        biblioteca.buscarlilbro(lista, codigo);
+    }
+
+}
