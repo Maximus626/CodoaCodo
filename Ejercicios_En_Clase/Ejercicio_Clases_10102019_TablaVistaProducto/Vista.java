@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author alumno
  */
 public class Vista extends javax.swing.JFrame {
-    
+    DefaultTableModel modelo = new DefaultTableModel();
     ArrayList<Producto> lista = new ArrayList<>();
 
     /**
@@ -23,6 +23,7 @@ public class Vista extends javax.swing.JFrame {
      */
     public Vista() {
         initComponents();
+        
     }
     
     public void mostrar(){
@@ -35,7 +36,8 @@ public class Vista extends javax.swing.JFrame {
  
         }
         String titulo[] = {"Id","Producto","Precio"};
-    DefaultTableModel modelo = new DefaultTableModel(matriz,titulo);
+    //DefaultTableModel modelo = new DefaultTableModel(matriz,titulo);
+    modelo.setDataVector(matriz,titulo);
     Tabla.setModel(modelo);
     
     }
@@ -59,6 +61,7 @@ public class Vista extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnMostrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
@@ -90,11 +93,22 @@ public class Vista extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel4.setText("SISTEMA DE INGRESO");
 
+        jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(148, 148, 148))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -112,13 +126,11 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                    .addComponent(btnMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                        .addComponent(btnMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(37, 37, 37))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(148, 148, 148))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +155,9 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(btnGuardar)
                         .addGap(29, 29, 29)
                         .addComponent(btnMostrar)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 204));
@@ -181,8 +195,8 @@ public class Vista extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,6 +243,17 @@ public class Vista extends javax.swing.JFrame {
         mostrar();
     }//GEN-LAST:event_btnMostrarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int fila;
+        fila = Tabla.getSelectedRow();
+        if (fila >= 0) {
+            modelo.removeRow(fila);
+            lista.remove(fila);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,6 +293,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTable Tabla;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnMostrar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
