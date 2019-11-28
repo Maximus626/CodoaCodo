@@ -10,6 +10,10 @@ public class vcliente  extends vpersona{
         this.codigo_cliente = codigo_cliente;
     }
 
+    public vcliente() {
+
+    }
+
     public String getCodigo_cliente() {
         return codigo_cliente;
     }

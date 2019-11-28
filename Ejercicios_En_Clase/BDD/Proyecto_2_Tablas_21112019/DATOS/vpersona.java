@@ -10,12 +10,13 @@ public class vpersona {
     private String tipo_documento;
     private String num_documento;
     private String direccion;
+    private String telefono;
     private String email;
 
     public vpersona() {
     }
 
-    public vpersona(int persona, String nombre, String apaterno, String amaterno, String tipo_documento, String num_documento, String direccion, String email) {
+    public vpersona(int persona, String nombre, String apaterno, String amaterno, String tipo_documento, String num_documento, String direccion, String telefono, String email) {
         this.persona = persona;
         this.nombre = nombre;
         this.apaterno = apaterno;
@@ -23,6 +24,7 @@ public class vpersona {
         this.tipo_documento = tipo_documento;
         this.num_documento = num_documento;
         this.direccion = direccion;
+        this.telefono = telefono;
         this.email = email;
     }
 
@@ -82,6 +84,14 @@ public class vpersona {
         this.direccion = direccion;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -89,7 +99,5 @@ public class vpersona {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
+
 }
